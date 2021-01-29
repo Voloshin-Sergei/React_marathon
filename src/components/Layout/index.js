@@ -1,7 +1,6 @@
 import s from './style.module.css';
-//import urlBg from './assets/bg1.jpg';
 
-const Layout = ({ id, title, descr, urlBg, colorBg }) => {
+const Layout = ({ id, title, urlBg, colorBg, children }) => {
   const styleSection = colorBg
     ? { backgroundColor: colorBg }
     : { backgroundImage: `url(${urlBg})` };
@@ -13,9 +12,7 @@ const Layout = ({ id, title, descr, urlBg, colorBg }) => {
             <h3>{title}</h3>
             <span className={s.separator}></span>
           </div>
-          <div className={`${s.desc} ${s.full}`}>
-            <p>{descr}</p>
-          </div>
+          <div className={`${s.desc} ${s.full}`}>{children}</div>
         </article>
       </div>
     </section>
