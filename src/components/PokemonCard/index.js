@@ -8,9 +8,8 @@ const PokemonCard = ({ id, type, name, img, values }) => {
   const handlerClick = () => {
     if (!isActive) {
       setActive(true);
-    } else {
-      setActive(false);
     }
+    setActive(!isActive);
   };
   return (
     <div className={s.root} key={id} onClick={handlerClick}>
