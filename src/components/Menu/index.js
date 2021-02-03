@@ -2,31 +2,24 @@ import s from './style.module.css';
 import cn from 'classnames';
 
 const Menu = ({ isActive, onChangePage }) => {
+  const links = [
+    { name: 'HOME', href: '#welcome', rout: 'app' },
+    { name: 'GAME', href: '#game', rout: 'game' },
+    { name: 'ABOUT', href: '#about', rout: 'about' },
+    { name: 'CONTACT', href: '#contact', rout: 'contact' },
+  ];
   return (
     <div className={cn(s.menuContainer, isActive ? [s.active] : [s.deactive])}>
       <div className={s.overlay} />
       <div className={s.menuItems}>
         <ul>
-          <li>
-            <a href="#welcome" onClick={() => onChangePage('app')}>
-              HOME
-            </a>
-          </li>
-          <li>
-            <a href="#game" onClick={() => onChangePage('game')}>
-              GAME
-            </a>
-          </li>
-          <li>
-            <a href="#about" onClick={() => onChangePage('about')}>
-              ABOUT
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={() => onChangePage('contact')}>
-              CONTACT
-            </a>
-          </li>
+          {links.map((link) => (
+            <li key={link.name}>
+              <a href={link.href} onClick={() => onChangePage(link.rout)}>
+                {link.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

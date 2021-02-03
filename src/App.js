@@ -5,6 +5,7 @@ import HomePage from './routes/Home';
 const App = () => {
   const [page, setPage] = useState('app');
   const handlerChangePage = (page) => {
+    console.log(page);
     setPage(page);
   };
   switch (page) {
