@@ -11,7 +11,7 @@ const GamePage = () => {
     setPokemons(
       pokemons.map((pokemon) => {
         if (pokemon.id === id) {
-          pokemon.active = !pokemon.active;
+          return { ...pokemon, active: !pokemon.active };
         }
         return pokemon;
       }),
