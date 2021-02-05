@@ -1,23 +1,28 @@
-import s from './style.module.css';
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
-const Menu = ({ isActive, onChangePage }) => {
+import s from './style.module.css';
+const Menu = ({ isOpen, handlerBurgerClick }) => {
   const links = [
-    { name: 'HOME', href: '#welcome', rout: 'app' },
-    { name: 'GAME', href: '#game', rout: 'game' },
-    { name: 'ABOUT', href: '#about', rout: 'about' },
-    { name: 'CONTACT', href: '#contact', rout: 'contact' },
+    { name: 'HOME', href: '/' },
+    { name: 'GAME', href: '/game' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'CONTACT', href: '/contact' },
   ];
   return (
-    <div className={cn(s.menuContainer, isActive ? [s.active] : [s.deactive])}>
+    <div
+      className={cn(s.menuContainer, {
+        [s.active]: isOpen === true,
+        [s.deactive]: isOpen === false,
+      })}>
       <div className={s.overlay} />
       <div className={s.menuItems}>
         <ul>
-          {links.map((link) => (
-            <li key={link.name}>
-              <a href={link.href} onClick={() => onChangePage(link.rout)}>
-                {link.name}
-              </a>
+          {links.map(({ name, href }, index) => (
+            <li key={index}>
+              <Link to={href} onClick={handlerBurgerClick}>
+                {name}
+              </Link>
             </li>
           ))}
         </ul>

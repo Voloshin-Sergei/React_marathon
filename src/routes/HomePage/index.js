@@ -1,13 +1,7 @@
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
-import Footer from '../../components/Footer';
-import PokemonCard from '../../components/PokemonCard';
-import MenuHeader from '../../components/MenuHeader';
 
 import urlBg from '../../assets/bg1.jpg';
-import POKEMONS from '../../components/PokemonCard/Cards.json';
-
-import s from './style.module.css';
 
 const HomePage = ({ onChangePage }) => {
   const handlerClickButton = (page) => {
@@ -15,7 +9,6 @@ const HomePage = ({ onChangePage }) => {
   };
   return (
     <>
-      <MenuHeader onClickButton={handlerClickButton} />
       <Header
         title={'This is Pokemon Card Game'}
         descr={'Simple Triple Triad Card Game'}
@@ -31,20 +24,7 @@ const HomePage = ({ onChangePage }) => {
           turning them into the player's own color of red or blue.
         </p>
       </Layout>
-      <Layout id={'cards'} title={'Cards'} colorBg={'#ffa401'}>
-        <div className={s.flex}>
-          {POKEMONS.map((item) => (
-            <PokemonCard
-              key={item.id}
-              id={item.id}
-              type={item.type}
-              name={item.name}
-              img={item.img}
-              values={item.values}
-            />
-          ))}
-        </div>
-      </Layout>
+      <Layout id={'cards'} title={'Cards'} colorBg={'#ffa401'}></Layout>
       <Layout id={'full rules'} title={'Full rules'} urlBg={urlBg}>
         <p>
           To win, a majority of the total ten cards played (including the one card that is not
@@ -58,7 +38,6 @@ const HomePage = ({ onChangePage }) => {
           opponent's card will be captured and changed into the player's color instead.
         </p>
       </Layout>
-      <Footer />
     </>
   );
 };
