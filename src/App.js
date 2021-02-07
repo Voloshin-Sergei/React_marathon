@@ -1,4 +1,3 @@
-//import { useState } from 'react';
 import { useRouteMatch, Route, Switch, Redirect } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -35,19 +34,6 @@ const App = () => {
       </Route>
     </Switch>
   );
-
-  // const [page, setPage] = useState('app');
-  // const handlerChangePage = (page) => {
-  //   setPage(page);
-  // };
-  // switch (page) {
-  //   case 'app':
-  //     return <HomePage onChangePage={handlerChangePage} />;
-  //   case 'game':
-  //     return <GamePage onChangePage={handlerChangePage} />;
-  //   default:
-  //     return <HomePage />;
-  // }
 };
 
 export default App;
