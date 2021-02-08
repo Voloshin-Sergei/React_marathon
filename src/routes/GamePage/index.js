@@ -41,7 +41,15 @@ const GamePage = () => {
   const addNewCard = () => {
     const newKey = database.ref().child('pokemons').push().key;
 
-    database.ref('pokemons/' + newKey).set(data);
+    database
+      .ref('pokemons/' + newKey)
+      .set(data)
+      .then(() =>
+        setPokemons((prevState) => ({
+          ...prevState,
+          [newKey]: data,
+        })),
+      );
 
     database.ref('pokemons').once('value', (snapshot) => {
       setPokemons(snapshot.val());
@@ -52,9 +60,17 @@ const GamePage = () => {
     setPokemons((prevState) => {
       return Object.entries(prevState).reduce((acc, item) => {
         const pokemon = { ...item[1] };
+
         if (pokemon.id === id) {
           pokemon.active = !pokemon.active;
-          database.ref('pokemons/' + item[0]).set(pokemon);
+          database
+            .ref('pokemons/' + item[0])
+            .set(pokemon)
+            .then(() => {
+              setPokemons((prevState) => {
+                return { ...prevState, [item[0]]: pokemon };
+              });
+            });
         }
 
         acc[item[0]] = pokemon;
